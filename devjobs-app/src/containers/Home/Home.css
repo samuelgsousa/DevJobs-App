@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pixelify+Sans:wght@400..700&display=swap');
+
+*{
+    font-family: "Open Sans";
+}
+
+
+:root{
+    --MainColor: rgb(105, 72, 226);
+}
+
+header{
+
+    height: 10vh;
+    border-bottom-right-radius: 35px;
+    border-bottom-left-radius: 35px;
+    text-align: center;
+    margin-bottom: 40px;
+
+    background: linear-gradient(-45deg, #c84de0, #e73c7e, rgb(105, 72, 226), #2335d5);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    overflow: hidden;
+
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+header h1{
+    color: white;
+    font-size: 1.8rem;
+    margin-left: 70px;
+}
+
+
+
+body{
+    background-color: rgb(241, 241, 241) !important;
+}
+
+
+
+.jobs_list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+    justify-content: space-around;
+    align-items: start;
+}
+
+@media(min-width: 1400px){
+    .jobs_list > div{
+        width: 28rem !important;
+    }
+}
+
+@media(min-width: 1500px){
+    .jobs_list{
+        gap: 5%
+    }
+    
+}
+
+.jobs_list > div{
+    margin-top: 2rem;
+}
+
+.indv_vag{
+   overflow-y: hidden;
+   padding: 25px;
+}
+
+.botoes{
+    display: flex;
+    justify-content: space-between;
+}
+
+.botoes button{
+    font-weight: 100;
+}
+
+Button a{
+    text-decoration: none;
+    color: white;
+}
+
+footer{
+    margin-top: 40px;
+    background-color: white;
+    height: 8vh;
+    display: flex;
+    justify-content: space-around;
+    gap: 40%;
+    align-items: center;
+}
+
+footer div{
+    display: flex;
+    gap: 50px;
+
+}
+
+footer div a{
+    display: flex;
+    align-items: end;
+    gap: 15px;
+    text-decoration: none;
+    color: var(--MainColor);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+footer img{
+    width: 32px;
+    height: 32px;
+}
+
+.external{
+    width: 14px;
+    height: 14px;
+    align-self: self-start;
+    margin-left: -15px;
+ 
+}
+
+footer span{
+    font-size: 1.2rem;
+}
+
+strong{
+    color: var(--MainColor);
+}
