@@ -1,41 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Form from 'react-bootstrap/Form';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-
-const CustomMenu = React.forwardRef(({ children }) => {
-    const [value, setValue] = useState('');
-
-
-    return (
-     <>
-        <Form.Control autoFocus className="mx-3 my-2 w-auto" placeholder="Filtrar" onChange={(e) => setValue(e.target.value)} value={value} />
-
-        <ul className="list-unstyled">
-        {React.Children.toArray(children)}
-        </ul>
-     </>
-    )
-  }
-)
+import { filtrar } from './filtrarFunction';
 
 
 const BuscaLocal = ({ locais }) =>{
 
-  const locaisFiltrados = [...new Set(locais)]
-  //console.log(locaisFiltrados)
 
-  //depois melhorar a questão do local, pois até o menor espaço pode fazer com que o valor fique duplicado
+  const [listaFiltrada, setListaFiltrada] = useState([...new Set(locais)])
+
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    setValue(inputValue);
+    const novaLista = filtrar(locais, inputValue);
+    setListaFiltrada(novaLista);
+  }
+
+
+
+  const [value, setValue] = useState('');
+  
 
     return(
+      
         <>
 
-        
-  <DropdownButton title="Busca por Local">
-    <Dropdown.Menu as={CustomMenu}>
+  <DropdownButton title="Busca por Local" onClick={handleInputChange} value=''>
+
+  <Form.Control autoFocus className="mx-3 my-2 w-auto" placeholder="Filtrar" onChange={handleInputChange}
+        value={value} />
+
+    <Dropdown.Menu >
       
     {
-    locaisFiltrados.map((localidade, index) => (
+    listaFiltrada.map((localidade, index) => (
        
         <Dropdown.Item key={index} eventKey={index}>{localidade.localidade}</Dropdown.Item>))
 }
@@ -44,6 +43,9 @@ const BuscaLocal = ({ locais }) =>{
 
         </>
     )
+    
 }
+
+
 
 export default BuscaLocal

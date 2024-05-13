@@ -4,8 +4,7 @@ import Header from './containers/Header/Header'
 import Home from './containers/Home/Home'
 import Apply from './containers/VagaSelec/Apply'
 import Footer from './containers/Footer/Footer'
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState} from 'react'
 
 const  App = () => {
 

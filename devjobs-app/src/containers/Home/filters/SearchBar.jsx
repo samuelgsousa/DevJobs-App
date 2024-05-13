@@ -11,12 +11,12 @@ import React, { useEffect, useState } from 'react'
 
 const Search = ({onSearch}) =>{
 
-  const [vagas, setVagas] = useState([])
+  const [locais, setLocais] = useState([])
 
-  const fetchVagas = async () =>{
+  const fetchLocais = async () =>{
     try{
         const response = await axios.get('http://localhost:3000/locais')
-        setVagas(response.data)
+        setLocais(response.data)
  
     }
     catch(error){
@@ -27,9 +27,11 @@ const Search = ({onSearch}) =>{
 
 useEffect(() => {
 
-fetchVagas() 
+fetchLocais() 
 
 }, [])
+
+
 
 
 
@@ -56,7 +58,7 @@ fetchVagas()
 
         <Navbar.Brand>
         
-          <BuscaLocal id="local" locais={vagas}/> {/*componente de busca por local*/}
+          <BuscaLocal id="local" locais={locais} /> {/*componente de busca por local*/}
 
         </Navbar.Brand>
        

@@ -2,8 +2,12 @@ import Search from './filters/SearchBar'
 import Jobs from './Jobs'
 import './Home.css'
 import { useState } from 'react'
+import { filtrar } from './filters/filtrarFunction'
+
 
 const Home = () => {
+
+
 const [searchQuery, setSearchQuery] = useState('')
 
 const handleSearch = (query) => {
