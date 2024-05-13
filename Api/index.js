@@ -68,6 +68,25 @@ const buscarRequisitos = (id) =>{
   })
 }
 
+const buscarLocalAll = () => {
+  return new Promise((resolve, reject)=>{
+    const query = `SELECT localidade FROM vagas`
+    connection.query(query, (error, results) =>{
+
+      if(error){
+        console.error('Erro ao buscar locais', error)
+        return reject(error)
+      }
+      if(results.length === 0) return resolve([])
+  
+        resolve(results)
+    })
+
+  
+})
+}
+
+
 //Rota para buscar os requisitos
 
 app.get('/requisitos/:id', async (req, res) => {
@@ -97,12 +116,26 @@ app.get('/', async (req, res) => {
 
   try{
     const allVagas = await buscarVagasAll()
-
     if(!allVagas) return res.status(404).json({error: 'Nenhuma vaga encontrada'})
     res.json(allVagas)
   }
   catch(error){
     console.error('Erro ao buscar vagas', error)
+    res.status(500).json({error: 'Erro interno do servidor'})
+  }
+
+})
+
+app.get('/locais', async (req, res) => {
+
+  try{
+    const locais = await buscarLocalAll()
+
+    if(!locais) return res.status(404).json({error: 'Nenhum local encontrado'})
+    res.json(locais)
+  }
+  catch(error){
+    console.error('Erro ao buscar locais', error)
     res.status(500).json({error: 'Erro interno do servidor'})
   }
 

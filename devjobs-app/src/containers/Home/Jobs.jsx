@@ -5,7 +5,6 @@ import Card from 'react-bootstrap/Card'
 import ListaRequisitos from './ListaRequisitos'
 import Button from 'react-bootstrap/Button'
 import Collapse from 'react-bootstrap/Collapse'
-import AppRoutes from '../../AppRoutes'
 import { Link } from 'react-router-dom';
 
 const Jobs = ({ searchQuery }) => {
@@ -47,7 +46,7 @@ const toggleText = (index) => {
              {
                 /* filtro. por enquanto está só filtrando por nome da empresa. Alterar para filtrar por outros dados*/
              vagas.filter((vaga) => {
-                return searchQuery.toLowerCase() === '' ? vaga : vaga.nome_empresa.toLowerCase().includes(searchQuery.toLowerCase())
+                return searchQuery.toLowerCase() === '' ? vaga : vaga.nome_empresa.toLowerCase().includes(searchQuery.toLowerCase()) || vaga.cargo.toLowerCase().includes(searchQuery.toLowerCase())
              }).map((vaga, index) => (
 
                

@@ -1,4 +1,4 @@
-import Search from '../Header/SearchBar'
+import Search from './filters/SearchBar'
 import Jobs from './Jobs'
 import './Home.css'
 import { useState } from 'react'
@@ -10,9 +10,10 @@ const handleSearch = (query) => {
     setSearchQuery(query)
 }
 
+
     return(
         <>
-        <Search onSearch={handleSearch} /> {/*barra de pesquisa*/}
+        <Search onSearch={handleSearch}/> {/*barra de pesquisa*/}
 
         <div class="jobs_list"><Jobs searchQuery={searchQuery}/></div>
         
