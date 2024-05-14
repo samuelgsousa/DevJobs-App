@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model requisitos {
+  id        Int     @id @default(autoincrement())
+  vaga_id   Int?
+  requisito String? @db.VarChar(255)
+  vagas     vagas?  @relation(fields: [vaga_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "requisitos_ibfk_1")
+
+  @@index([vaga_id], map: "vaga_id")
+}
+
+model vagas {
+  id           Int          @id @default(autoincrement())
+  nome_empresa String?      @db.VarChar(100)
+  logo         String?      @db.VarChar(100)
+  data_pub     DateTime?    @db.Date
+  cargo        String?      @db.VarChar(100)
+  descricao    String?      @db.Text
+  localidade   String?      @db.VarChar(100)
+  tipo         String?      @db.VarChar(20)
+  requisitos   requisitos[]
+}
+
