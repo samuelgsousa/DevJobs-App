@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
-    "dev": "nodemon src/server.ts",
-    "vercel-build": "npx prisma migrate deploy"
+    "dev": "nodemon src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +16,8 @@
     "express": "^4.19.2",
     "mysql": "^2.18.1",
     "nodemon": "^3.1.0"
+  },
+  "prisma": {
+    "schema": "db/schema.prisma"
   }
 }
